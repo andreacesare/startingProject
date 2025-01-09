@@ -1,12 +1,11 @@
-import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {Component, EventEmitter, inject, Inject, Input, Output} from '@angular/core';
 import {FormsModule} from "@angular/forms";
 import {NewTaskData} from "../task/task.model";
 import {TaskService} from "../tasks.service";
 
 @Component({
   selector: 'app-new-task',
-  standalone: true,
-  imports: [FormsModule],
+  standalone: false,
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css'
 })
@@ -16,7 +15,7 @@ export class NewTaskComponent {
   enteredTitle='';
   enteredSummary='';
   enteredDate='';
-  private taskService = Inject(TaskService);
+  private taskService = inject(TaskService);
 
   onCancel(){
     this.close.emit();
